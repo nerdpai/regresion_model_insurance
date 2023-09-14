@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.compose import make_column_transformer
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split
+import sys, os
 
 
 def getDataAndLables(dataFrame: pd.DataFrame, name: str = "target"):
@@ -102,4 +103,7 @@ def main():
 
 
 if __name__ == "__main__":
+    is_conda = os.path.exists(os.path.join(sys.prefix, "conda-meta", "history"))
+    if not is_conda:
+        raise EnvironmentError()
     main()
